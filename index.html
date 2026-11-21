@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#6c4df6">
+  <meta name="description" content="English Grammar Hub — a playful Grade 9 grammar practice platform.">
+  <title>English Grammar Hub | Grade 9</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="English Grammar Hub home">
+        <span class="brand-mark">Aa</span>
+        <span><b>English Grammar</b><small>HUB · GRADE 9</small></span>
+      </a>
+      <nav class="topnav" aria-label="Main navigation">
+        <button class="nav-link active" data-view="home">Home</button>
+        <button class="nav-link" data-view="topics">Grammar topics</button>
+        <button class="nav-link" data-view="progress">My progress</button>
+      </nav>
+      <div class="profile-pill"><span class="avatar">🎓</span><span>Grammar explorer</span></div>
+    </header>
+
+    <main>
+      <section id="home-view" class="view">
+        <section class="hero">
+          <div class="hero-copy">
+            <div class="eyebrow"><span class="sparkle">✦</span> YOUR GRAMMAR ADVENTURE STARTS HERE</div>
+            <h1>Learn grammar.<br><span>Level up!</span></h1>
+            <p>Practise English grammar step by step, collect points and become a grammar champion.</p>
+            <button class="primary-btn" id="start-learning">Explore topics <span>→</span></button>
+            <div class="hero-note"><span>⭐</span> Small steps make big progress!</div>
+          </div>
+          <div class="hero-art" aria-hidden="true">
+            <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
+            <div class="book">📘</div><div class="float-star star-a">⭐</div>
+            <div class="float-star star-b">✨</div><div class="float-star star-c">💡</div>
+            <div class="bubble bubble-one">PRACTISE</div><div class="bubble bubble-two">YOU CAN DO IT!</div>
+          </div>
+        </section>
+
+        <section class="stats-grid" aria-label="Your statistics">
+          <article class="stat-card purple"><div class="stat-icon">🏆</div><div><strong id="total-points">0</strong><span>Total points</span></div></article>
+          <article class="stat-card orange"><div class="stat-icon">🔥</div><div><strong id="streak-count">0</strong><span>Topics completed</span></div></article>
+          <article class="stat-card green"><div class="stat-icon">📈</div><div><strong id="accuracy-rate">—</strong><span>Average accuracy</span></div></article>
+          <article class="stat-card blue"><div class="stat-icon">🎖️</div><div><strong id="level-name">Rookie</strong><span>Your current level</span></div></article>
+        </section>
+
+        <section class="section-heading">
+          <div><div class="eyebrow dark-eyebrow">CHOOSE YOUR CHALLENGE</div><h2>Popular grammar topics</h2></div>
+          <button class="text-btn" data-view="topics">View all topics <span>→</span></button>
+        </section>
+        <div class="topic-grid" id="home-topics"></div>
+      </section>
+
+      <section id="topics-view" class="view hidden">
+        <div class="page-heading"><div class="eyebrow dark-eyebrow">YOUR LEARNING PATH</div><h1>Grammar topics</h1><p>Choose a topic and complete a short challenge.</p></div>
+        <div class="filter-row">
+          <label class="search-box">🔎 <input id="topic-search" type="search" placeholder="Search grammar topics..."></label>
+          <span class="topic-count" id="topic-count"></span>
+        </div>
+        <div class="topic-grid" id="all-topics"></div>
+      </section>
+
+      <section id="quiz-view" class="view hidden">
+        <button class="back-btn" id="back-to-topics">← Back to topics</button>
+        <div class="quiz-layout">
+          <section class="quiz-main">
+            <div class="quiz-topline"><span class="topic-tag" id="quiz-category">GRAMMAR</span><span id="question-counter">QUESTION 1 / 5</span></div>
+            <div class="progress-track"><div class="progress-fill" id="quiz-progress"></div></div>
+            <div class="quiz-card">
+              <div class="question-icon" id="question-icon">🧠</div>
+              <h2 id="question-title">Choose the correct answer</h2>
+              <p class="question-instruction" id="question-instruction">Select the best option.</p>
+              <div id="question-area"></div>
+              <div id="feedback" class="feedback hidden" role="status"></div>
+              <div class="quiz-actions">
+                <span class="points-hint">⭐ Up to 20 points per question</span>
+                <button class="primary-btn" id="check-answer">Check answer</button>
+                <button class="primary-btn hidden" id="next-question">Next question →</button>
+              </div>
+            </div>
+          </section>
+          <aside class="quiz-side">
+            <div class="side-card">
+              <div class="side-emoji">🎯</div><h3>Your mission</h3><p>Read carefully, choose your answer and learn from every mistake.</p>
+              <div class="side-divider"></div><div class="mini-stat"><span>⭐ Points this round</span><b id="round-points">0</b></div>
+              <div class="mini-stat"><span>✓ Correct answers</span><b id="round-correct">0</b></div>
+            </div>
+            <div class="tip-card"><span>💡</span><div><b>Study tip</b><p>Look for time expressions and keywords. They often help you choose the correct tense.</p></div></div>
+          </aside>
+        </div>
+      </section>
+
+      <section id="result-view" class="view hidden">
+        <div class="result-card">
+          <div class="result-confetti">🎉 ✨ 🏆 ✨ 🎉</div>
+          <div class="result-medal" id="result-medal">🏆</div>
+          <div class="eyebrow dark-eyebrow">CHALLENGE COMPLETED</div>
+          <h1 id="result-title">Great work!</h1>
+          <p id="result-subtitle">You have completed this grammar challenge.</p>
+          <div class="result-score"><strong id="result-points">0</strong><span>POINTS EARNED</span></div>
+          <div class="result-metrics"><div><b id="result-correct">0/5</b><span>Correct answers</span></div><div><b id="result-percent">0%</b><span>Accuracy</span></div><div><b id="result-xp">+0 XP</b><span>Experience</span></div></div>
+          <div class="result-message" id="result-message"></div>
+          <div class="result-actions"><button class="primary-btn" id="retry-topic">Try again ↻</button><button class="secondary-btn" id="result-topics">Choose another topic</button></div>
+        </div>
+      </section>
+
+      <section id="progress-view" class="view hidden">
+        <div class="page-heading"><div class="eyebrow dark-eyebrow">YOUR ACHIEVEMENTS</div><h1>My progress</h1><p>Your learning journey, saved on this device.</p></div>
+        <div class="progress-overview">
+          <div class="progress-big"><span>⭐ Total points</span><strong id="progress-total">0</strong><small id="progress-level">Rookie level</small></div>
+          <div class="progress-big"><span>📚 Completed topics</span><strong id="progress-completed">0</strong><small>Keep going!</small></div>
+          <div class="progress-big"><span>🎯 Average accuracy</span><strong id="progress-accuracy">—</strong><small>Across completed rounds</small></div>
+        </div>
+        <div class="section-heading"><div><div class="eyebrow dark-eyebrow">YOUR RECORD</div><h2>Topic results</h2></div><button class="secondary-btn small-btn" id="reset-progress">Reset progress</button></div>
+        <div class="table-wrap"><table><thead><tr><th>Topic</th><th>Best score</th><th>Accuracy</th><th>Status</th></tr></thead><tbody id="progress-table"></tbody></table></div>
+      </section>
+    </main>
+    <footer><span class="footer-logo">Aa</span><span><b>English Grammar Hub</b><small>Made for curious minds · Grade 9</small></span><span class="footer-right">Learn · Practise · Achieve ✨</span></footer>
+  </div>
+  <div id="toast" class="toast" role="status"></div>
+  <script src="script.js"></script>
+</body>
+</html>
